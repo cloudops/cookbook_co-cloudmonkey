@@ -1,0 +1,22 @@
+[core]
+cache_file = /root/.cloudmonkey/cache
+log_file = /root/.cloudmonkey/log
+asyncblock = true
+paramcompletion = false
+history_file = /root/.cloudmonkey/history
+
+[ui]
+color = true
+prompt = > 
+display = default
+
+[user]
+secretkey = <%= @secret_key %>
+apikey = <%= @api_key %>
+
+[server]
+path = /client/api
+host = <%= @uri_host %>
+protocol = http
+port = 8080
+timeout = 3600
