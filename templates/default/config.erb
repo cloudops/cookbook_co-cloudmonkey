@@ -1,22 +1,23 @@
+# File managed by Chef
 [core]
-cache_file = /root/.cloudmonkey/cache
-log_file = /root/.cloudmonkey/log
-asyncblock = true
+profile         = <%= node['hostname'] %>
+asyncblock      = true
 paramcompletion = false
-history_file = /root/.cloudmonkey/history
+history_file    = /root/.cloudmonkey/history
+cache_file      = /root/.cloudmonkey/cache
+log_file        = /root/.cloudmonkey/log
 
 [ui]
-color = true
-prompt = > 
+color   = true
+prompt  = 🐵 >
 display = default
 
-[user]
-secretkey = <%= @secret_key %>
-apikey = <%= @api_key %>
-
-[server]
-path = /client/api
-host = <%= @uri_host %>
-protocol = http
-port = 8080
-timeout = 3600
+[<%= node['hostname'] %>]
+url           = <%= @uri_host %>
+username      = admin
+password      = password
+apikey        = <%= @api_key %>
+secretkey     = <%= @secret_key %>
+expires       = 600
+timeout       = 3600
+verifysslcert = false

@@ -25,24 +25,21 @@ include_recipe "python"
 # install latest cloudmonkey 
 python_pip "cloudmonkey"
 
-host = ""
 api_key = ""
 secret_key = ""
 
 begin
   host_url = search(:node, "chef_environment:#{node.chef_environment} AND cloudstack_url:* ").first
 rescue
-  host_url = nil
+  host_url = 'http://localhost:8080/client/api'
   return
 end
 
-if ! host_url.nil? 
-  uri_host = URI.parse(host_url["cloudstack"]["cloudstack_url"]).host
-  apikey = search(:node, "chef_environment:#{node.chef_environment} AND api_key:* AND secret_key:*").first
-  if ! apikey.empty?
-    api_key = apikey["cloudstack"]["admin"]["api_key"]
-    secret_key = apikey["cloudstack"]["admin"]["secret_key"]
-	end
+#  uri_host = URI.parse(host_url["cloudstack"]["cloudstack_url"]).host
+apikey = search(:node, "chef_environment:#{node.chef_environment} AND api_key:* AND secret_key:*").first
+unless apikey.empty?
+  api_key = apikey["cloudstack"]["admin"]["api_key"]
+  secret_key = apikey["cloudstack"]["admin"]["secret_key"]
 end
 
 directory "/root/.cloudmonkey" do
@@ -57,9 +54,9 @@ template "/root/.cloudmonkey/config" do
   group "root"
   mode "0600"
   variables(
-    :uri_host => uri_host,
-    :api_key =>  api_key,
-    :secret_key =>  secret_key
+    :uri_host   => 'http://localhost:8080/client/api',
+    :api_key    => api_key,
+    :secret_key => secret_key
   )
 end
 

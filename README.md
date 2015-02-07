@@ -2,16 +2,9 @@ co-cloudmonkey Cookbook
 =======================
 
 This cookbook will install cloudmonkey and create configuration file for user root.
-If use with co-cloudstack, it will add admin account <tt>api_key</tt> and <tt>secret_key</tt> in the config in 
-<tt>/root/.cloudmonkey/config</tt>.
+If use with cloudstack cookbook, it will add admin account <tt>api_key</tt> and <tt>secret_key</tt> in the config located in <tt>/root/.cloudmonkey/config</tt>.
 
-cloudmonkey is a command line interface (CLI) tool for CloudStack written in Python. 
-cloudmonkey can be use both as an interactive shell and as a command line tool which 
-simplifies CS configuration and management. It is unofficially distributed by 
-community maintained distribution at the cheese shop http://pypi.python.org/pypi/cloudmonkey/ 
-as well as within the git repository in tools/cli/. 
-It can be used with Apache CloudStack 4.0-incubating and above.
-
+The Apache CloudStack CloudMonkey is a command line interface (CLI) tool for [CloudStack](http://cloudstack.apache.org/) written in Python. cloudmonkey can be use both as an interactive shell and as a command line tool which simplifies CS configuration and management.
 
 Requirements
 ------------
@@ -23,8 +16,8 @@ Attributes
 
 Attributes not required in order to install cloudmonkey.
 
-- <tt>['cloudstack']['admin']['api_key']</tt> - Cloudstack admin account <tt>api_key</tt>. Empty if not populated by co-cloudstack cookbook.
-- <tt>['cloudstack']['admin']['secret_key']</tt> - Cloudstack admin account <tt>secret_key</tt>. Empty if not populated by co-cloudstack cookbook.
+- <tt>node['cloudstack']['admin']['api_key']</tt> - Cloudstack admin account <tt>api_key</tt>. Empty if not populated by co-cloudstack cookbook.
+- <tt>node['cloudstack']['admin']['secret_key']</tt> - Cloudstack admin account <tt>secret_key</tt>. Empty if not populated by co-cloudstack cookbook.
 
 
 License and Authors
