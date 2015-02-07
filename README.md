@@ -32,7 +32,7 @@ License and Authors
 - Authors:: Pierre-Luc Dion (<pdion@cloudops.com>)
 
 ```text
-Copyright:: Copyright (c) 2013 CloudOps.com
+Copyright:: Copyright (c) 2015 CloudOps.com
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
